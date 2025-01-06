@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Home</title>
+    <style>
+        /* Add your previous styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .profile {
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 20px auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        img {
+            max-width: 100px;
+            border-radius: 50%;
+        }
+
+        button {
+            background-color: #f44336;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Welcome, <span id="studentName"></span></h1>
+    </header>
+
+    <div class="profile">
+        <h2>Profile</h2>
+        <img id="profilePic" src="" alt="Profile Picture">
+        <p><strong>Email:</strong> <span id="studentEmail"></span></p>
+        <p><strong>Class:</strong> <span id="studentClass"></span></p>
+
+        <button onclick="logout()">Logout</button>
+    </div>
+
+    <script>
+        // Get data from localStorage and display
+        document.getElementById("studentName").textContent = localStorage.getItem("studentName");
+        document.getElementById("studentEmail").textContent = localStorage.getItem("studentEmail");
+        document.getElementById("studentClass").textContent = localStorage.getItem("studentClass");
+        document.getElementById("profilePic").src = localStorage.getItem("studentProfilePic");
+
+        // Logout function
+        function logout() {
+            // Clear localStorage
+            localStorage.removeItem("studentName");
+            localStorage.removeItem("studentEmail");
+            localStorage.removeItem("studentPassword");
+            localStorage.removeItem("studentClass");
+            localStorage.removeItem("studentProfilePic");
+
+            // Redirect to the index page
+            window.location.href = "index.html";
+        }
+    </script>
+
+</body>
+</html>

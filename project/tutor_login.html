@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutor Login</title>
+    <style>
+        /* Add your previous styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .login-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Tutor Login</h2>
+
+        <input type="text" id="tutorEmail" placeholder="Email" required>
+        <input type="password" id="tutorPassword" placeholder="Password" required>
+        <button onclick="login()">Login</button>
+        <p>Don't have an account? <a href="tutor_register.html">Register</a></p>
+
+        <div class="error" id="error-message"></div>
+    </div>
+
+    <script>
+        function login() {
+            const email = document.getElementById('tutorEmail').value;
+            const password = document.getElementById('tutorPassword').value;
+
+            // Get stored data from localStorage
+            const storedEmail = localStorage.getItem('tutorEmail');
+            const storedPassword = localStorage.getItem('tutorPassword');
+
+            // Validate login credentials
+            if (email === storedEmail && password === storedPassword) {
+                // Login successful, store user data to localStorage (optional)
+                localStorage.setItem('isLoggedIn', 'true');
+                window.location.href = "tutor_home.html";
+            } else {
+                // Show error message
+                document.getElementById('error-message').textContent = "Invalid email or password.";
+            }
+        }
+    </script>
+
+</body>
+</html>
